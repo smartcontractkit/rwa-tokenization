@@ -1,0 +1,31 @@
+{
+    "name": "rwa-tokenization-api",
+    "version": "1.0.0",
+    "description": "API used to acquire housing data on-chain.",
+    "main": "index.ts",
+    "scripts": {
+      "start": "node index.ts"
+    },
+    "keywords": [],
+    "author": "0xbuns",
+    "license": "MIT",
+    "dependencies": {
+        "@koa/cors": "^5.0.0",
+        "bn.js": "^5.2.1",
+        "koa": "^2.15.2",
+        "koa-bodyparser": "^4.4.1",
+        "koa-conditional-get": "^3.0.0",
+        "koa-etag": "^4.0.0",
+        "koa-helmet": "^7.0.2",
+        "koa-router": "^12.0.1",
+        "node-fetch": "^3.3.2",
+        "web3": "^4.6.0"
+    },
+    "devDependencies": {},
+    "lint-staged": {
+      "*.ts": "prettier --write",
+      "*.js": "prettier --write",
+      "*.json": "prettier --write"
+    }
+  }
+  
