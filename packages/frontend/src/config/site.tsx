@@ -2,7 +2,7 @@ export const siteConfig = {
   title: 'RWA Tokenization | Chainlink',
   description: 'Chainlink Functions example for tokenizing real-world assets',
   links: {
-    github: 'https://github.com/BunsDev/rwa-tokenization',
+    github: 'https://github.com/SmartContractKit/rwa-tokenization',
     docs: 'https://dev.chain.link/products/functions',
     functionsDocs:
       'https://docs.chain.link/chainlink-functions/getting-started',

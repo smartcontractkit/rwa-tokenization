@@ -123,7 +123,7 @@ const UnderTheHood = ({ children }: { children?: ReactNode }) => {
             <Link
               target="_blank"
               rel="noreferrer"
-              href="https://remix.ethereum.org/#url=https://github.com/BunsDev/rwa-tokenization/blob/main/packages/contracts/src/RealEstate.sol"
+              href="https://remix.ethereum.org/#url=https://github.com/SmartContractKit/rwa-tokenization/blob/main/packages/contracts/src/RealEstate.sol"
               className={cn(
                 buttonVariants({ variant: 'link' }),
                 'space-x-2 py-3',

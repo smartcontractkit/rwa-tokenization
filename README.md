@@ -24,7 +24,7 @@
 
 Clone the repo, navigate to the directory, and install dependencies with `make`
 ```
-git clone https://github.com/BunsDev/rwa-tokenization
+git clone https://github.com/SmartContractKit/rwa-tokenization
 cd rwa-tokenization/contracts
 make
 ```
