@@ -1,0 +1,12 @@
+{
+  "name": "rwa-tokenization",
+  "version": "1.0.0",
+  "description": "RWA tokenization using Chainlink Function on Avalanche.",
+  "main": "index.js",
+  "repository": "https://github.com/BunsDev/rwa-asset-tokenization.git",
+  "author": "Buns Enchantress <bunsthedev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  }
+}
