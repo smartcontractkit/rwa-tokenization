@@ -1,0 +1,35 @@
+{
+  "name": "@chainlink/local",
+  "description": "Chainlink Local Simulator",
+  "license": "MIT",
+  "version": "0.1.0",
+  "files": [
+    "src/**/*.sol",
+    "!src/test/**/*",
+    "scripts/ccipLocalSimulatorFork.js",
+    "abi/**/*.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartcontractkit/chainlink-local.git"
+  },
+  "keywords": [
+    "chainlink"
+  ],
+  "scripts": {
+    "hardhat-compile": "npx hardhat compile",
+    "forge-compile": "forge build",
+    "hardhat-test": "npx hardhat test",
+    "forge-test": "forge test",
+    "test": "npm run hardhat-test && npm run forge-test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-foundry": "^1.1.1",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.20.1"
+  },
+  "dependencies": {
+    "@chainlink/contracts-ccip": "^1.4.0"
+  }
+}

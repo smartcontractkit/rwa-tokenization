@@ -1,0 +1,128 @@
+package models
+
+import (
+	"bytes"
+	"crypto/sha256"
+	"encoding/json"
+	"fmt"
+	"math/big"
+	"time"
+
+	"github.com/ethereum/go-ethereum/common"
+	chainsel "github.com/smartcontractkit/chain-selectors"
+)
+
+type Address common.Address
+
+func (a *Address) String() string {
+	return common.Address(*a).Hex()
+}
+
+func (a *Address) UnmarshalJSON(input []byte) error {
+	ta := common.Address(*a)
+	err := ta.UnmarshalJSON(input)
+	if err != nil {
+		return err
+	}
+	*a = Address(ta)
+	return nil
+}
+
+func (a Address) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf(`"%s"`, common.Address(a).Hex())), nil
+}
+
+type NetworkSelector uint64
+
+const (
+	NetworkTypeUnknown = "unknown"
+	NetworkTypeEvm     = "evm"
+	NetworkTypeSolana  = "sol"
+)
+
+func (n NetworkSelector) Type() NetworkType {
+	isEvm, err := chainsel.IsEvm(uint64(n))
+	if err == nil && isEvm {
+		return NetworkTypeEvm
+	}
+
+	return NetworkTypeUnknown
+}
+
+type NetworkType string
+
+type Transfer struct {
+	From       NetworkSelector
+	To         NetworkSelector
+	Amount     *big.Int
+	Date       time.Time
+	BridgeData []byte
+	// todo: consider adding some unique id field
+}
+
+func NewTransfer(from, to NetworkSelector, amount *big.Int, date time.Time, bridgeData []byte) Transfer {
+	return Transfer{
+		From:       from,
+		To:         to,
+		Amount:     amount,
+		Date:       date,
+		BridgeData: bridgeData,
+	}
+}
+
+func (t Transfer) Equals(other Transfer) bool {
+	return t.From == other.From &&
+		t.To == other.To &&
+		t.Amount.Cmp(other.Amount) == 0 &&
+		t.Date.Equal(other.Date) &&
+		bytes.Equal(t.BridgeData, other.BridgeData)
+}
+
+type PendingTransfer struct {
+	Transfer
+	Status TransferStatus
+}
+
+func (p PendingTransfer) Hash() ([32]byte, error) {
+	b, err := json.Marshal(p)
+	if err != nil {
+		return [32]byte{}, fmt.Errorf("marshal: %w", err)
+	}
+	return sha256.Sum256(b), nil
+}
+
+func (p PendingTransfer) String() string {
+	return fmt.Sprintf("PendingTransfer{Transfer: %s, Status: %s}", p.Transfer.String(), p.Status)
+}
+
+func NewPendingTransfer(tr Transfer) PendingTransfer {
+	return PendingTransfer{
+		Transfer: tr,
+		Status:   TransferStatusNotReady,
+	}
+}
+
+type TransferStatus string
+
+const (
+	TransferStatusNotReady  = "not-ready"
+	TransferStatusReady     = "ready"
+	TransferStatusFinalized = "finalized"
+	TransferStatusExecuted  = "executed"
+)
+
+func (t Transfer) String() string {
+	return fmt.Sprintf("%v->%v %s", t.From, t.To, t.Amount.String())
+}
+
+type Edge struct {
+	Source NetworkSelector
+	Dest   NetworkSelector
+}
+
+func NewEdge(source, dest NetworkSelector) Edge {
+	return Edge{
+		Source: source,
+		Dest:   dest,
+	}
+}
