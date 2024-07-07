@@ -21,8 +21,6 @@
     "read": "npx hardhat func-read --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0",
 
     "update": "npx hardhat func-update --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0 --tokenid 0 --subid 9614",
-    "issue": "npx hardhat func-issue --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0 --to 0x6D3cF2d1D7e113a2687dF9080CC490e176F53760 --subid 9614",
-
     "create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0x89DccebCB4715937487f472a482217883e64D5E0"
     },
     "dependencies": {
