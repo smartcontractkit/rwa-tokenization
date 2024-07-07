@@ -8,23 +8,15 @@ const apiResponse = await Functions.makeHttpRequest({
 });
 
 const listPrice = Number(apiResponse.data.listPrice);
-const originalPrice = Number(apiResponse.data.originalPrice);
-const taxValue = Number(apiResponse.data.taxValue);
 
 console.log(`List Price: ${listPrice}`);
-console.log(`Original List Price: ${originalPrice}`);
-console.log(`Tax Assessed Value: ${taxValue}`);
 
 const encoded = abiCoder.encode([
-    `uint256`, 
-    `uint256`, 
-    `uint256`, 
+    `uint256`,
     `uint256`
 ], [
-    tokenId, 
-    listPrice, 
-    originalPrice, 
-    taxValue
+    tokenId,
+    listPrice
 ]);
 
 return ethers.getBytes(encoded);
