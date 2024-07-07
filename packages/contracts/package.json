@@ -9,7 +9,6 @@
   "scripts": {
     "test": "forge test -vv",
     "prices": "node script/getPrices.js",
-    "metadata": "node script/getMetadata.js",
 
     "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
     "signin": "npx env-enc set-pw",
