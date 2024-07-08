@@ -76,7 +76,7 @@ Functions enable you to make requests via the consumer contract. Before requesti
 
 You may do this programmatically with: <br/>
 ```
-npx hardhat func-request --network <NETWORK_NAME> --contract <CONSUMER_ADDRESS> --subid <SUBSCRIPTION_ID>
+npx hardhat func-request --network <NETWORK_NAME> --contract <CONSUMER_ADDRESS> --subid <SUBSCRIPTION_ID> --tokenid <TOKEN_ID>
 ```
 
 You will see a confirmation request, so hit `Y` and press enter. 
@@ -86,5 +86,5 @@ Once the request is fulfilled the console will show the response (decoded into t
 ### 6. Make Queries
 You are also able to query the response that was stored in your Functions Consumer contract either through the [Functions UI](https://functions.chain.link/) or programmatically as follows: <br/>
 ```
-npx hardhat func-read --contract <CONSUMER_ADDRESS> --network <NETWORK_NAME>
+npx hardhat func-read --network <NETWORK_NAME> --contract <CONSUMER_ADDRESS> --tokenid <TOKEN_ID>
 ```
