@@ -3,7 +3,6 @@
 ## Getting Started
 - [Install Foundry and Rust](/docs/INSTALL.md)
 - [Foundry Guide](/docs/FOUNDRY.md)
-- [OpenAI API Key](https://platform.openai.com/api-keys)
 
 ## Overview of Functions
 Chainlink functions enables you to leverage the power of a decentralized oracle network (DON) to execute external function calls (off-chain) to inform on-chain interactions.
