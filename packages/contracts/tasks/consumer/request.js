@@ -40,7 +40,7 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
   .addOptionalParam(
     "configpath",
     "Path to Functions request config file",
-    `${__dirname}/../../requests/price/config.js`, // requestConfig
+    `${__dirname}/../../script/price-config.js`, // requestConfig
     types.string
   )
   .setAction(async (taskArgs, hre) => {
