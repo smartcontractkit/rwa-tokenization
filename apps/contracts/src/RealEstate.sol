@@ -99,7 +99,7 @@ contract RealEstate is
         _totalHouses++;
 
         // create: instance of a House.
-       houseInfo.push(Houses({
+       houseInfo.push(House({
             tokenId: tokenId,
             recipientAddress: recipientAddress,
             homeAddress: homeAddress,
@@ -128,7 +128,7 @@ contract RealEstate is
         args[0] = tokenId;
 
         // gets: houseInfo[tokenId]
-        Houses storage house = houseInfo[index];
+        House storage house = houseInfo[index];
 
         // ensures: price update is not too soon (i.e. not until a full epoch elapsed).
         require(block.timestamp - house.lastUpdate >= epoch, "RealEstate: Price update too soon");
@@ -209,7 +209,7 @@ contract RealEstate is
         latestPrice[tokenId] = string(response);
 
         // gets: houseInfo[tokenId]
-        Houses storage house = houseInfo[index];
+        House storage house = houseInfo[index];
 
         // updates: listPrice for a given `tokenId`.
         house.listPrice = string(response);
