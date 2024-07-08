@@ -24,7 +24,7 @@ yarn
 #### Create Password
 Chainlink Functions enables you to securely share secrets with the DON. Secrets are encrypted with a password.
 ```
-yarn signin
+npx env-enc set-pw
 ```
 Once the ecrpytion key is created with your desired password, you can safely share your secrets with the DON, which requires multiple nodes to decrypt with consensus.
 
@@ -35,7 +35,7 @@ We may now safely store environment variables without worrying about them being 
 These variables will be stored in a file called `.env.enc`.
 
 ```
-yarn setup
+npx env-enc set
 ```
 After running the command, you'll be prompted to enter the following for each variable to be encrypted:
 
@@ -52,7 +52,7 @@ Before deploying, it's useful to simulate the execution of your function to ensu
 You may simulate your function using the command below.
 
 ```
-yarn prices
+node script/getPrice.js
 ```
 
 For full details on creating HTTP requestion via functions, read our [API Reference Documentation](https://docs.chain.link/chainlink-functions/api-reference/javascript-source).
@@ -60,7 +60,7 @@ For full details on creating HTTP requestion via functions, read our [API Refere
 ### 3. Deploy Consumer
 
 ```
-yarn deploy
+forge script script/RealEstate.s.sol:RealEstateScript --rpc-url <RPC_URL> --broadcast
 ```
 
 **Note**: ensure you have updated the deployment script to align with your target blockchain configurations.
@@ -86,5 +86,5 @@ Once the request is fulfilled the console will show the response (decoded into t
 ### 6. Make Queries
 You are also able to query the response that was stored in your Functions Consumer contract either through the [Functions UI](https://functions.chain.link/) or programmatically as follows: <br/>
 ```
-npx hardhat func-read --network <NETWORK_NAME> --contract <CONSUMER_ADDRESS> --tokenid <TOKEN_ID>
+npx hardhat func-response --network <NETWORK_NAME> --contract <CONSUMER_ADDRESS> --tokenid <TOKEN_ID>
 ```
