@@ -18,6 +18,7 @@ const process = require("process")
 task("func-request", "Initiates an on-demand request from a Functions consumer contract")
   .addParam("contract", "Address of the consumer contract to call")
   .addParam("subid", "Billing subscription ID used to pay for the request")
+  .addParam("tokenid", "Index of the token to request")
   .addOptionalParam(
     "simulate",
     "Flag indicating if source JS should be run locally before making an on-chain request",
@@ -40,7 +41,7 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
   .addOptionalParam(
     "configpath",
     "Path to Functions request config file",
-    `${__dirname}/../../script/price-config.js`, // requestConfig
+    `${__dirname}/../../priceConfig.js`,
     types.string
   )
   .setAction(async (taskArgs, hre) => {
@@ -48,6 +49,7 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
     const contractAddr = taskArgs.contract
     const subscriptionId = parseInt(taskArgs.subid)
     const slotId = parseInt(taskArgs.slotid)
+    const tokenid = parseInt(taskArgs.tokenid)
     const callbackGasLimit = parseInt(taskArgs.callbackgaslimit)
 
     // Attach to the FunctionsConsumer contract
@@ -186,15 +188,10 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
     if (networks[network.name].nonce) {
       overrides.nonce = networks[network.name].nonce
     }
-    const requestTx = await consumerContract.sendRequest(
-      requestConfig.source,
-      requestConfig.secretsLocation,
-      encryptedSecretsReference,
-      requestConfig.args ?? [],
-      requestConfig.bytesArgs ?? [],
-      subscriptionId,
-      callbackGasLimit,
-      overrides
+
+    const requestTx = await consumerContract.requestLastPrice(
+      tokenid,  // tokenid
+      tokenid  // index of the token to request
     )
     const requestTxReceipt = await requestTx.wait(1)
     if (network.name !== "localFunctionsTestnet") {
