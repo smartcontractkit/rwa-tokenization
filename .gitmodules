@@ -1,0 +1,12 @@
+[submodule "packages/contracts/lib/chainlink"]
+	path = packages/contracts/lib/chainlink
+	url = https://github.com/lib/chainlink
+[submodule "packages/contracts/lib/chainlink-local"]
+	path = packages/contracts/lib/chainlink-local
+	url = https://github.com/lib/chainlink-local
+[submodule "packages/contracts/lib/forge-std"]
+	path = packages/contracts/lib/forge-std
+	url = https://github.com/lib/forge-std
+[submodule "packages/contracts/lib/openzeppelin-contracts"]
+	path = packages/contracts/lib/openzeppelin-contracts
+	url = https://github.com/lib/openzeppelin-contracts
