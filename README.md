@@ -17,9 +17,9 @@
   - You'll know you did it right if you can run `deno --version` and you see a response like `deno 1.40.5 (release, x86_64-apple-darwin) v8 12.1.285.27 typescript 5.3.3`
 
 ## Packages
-There are 3 distinct packages: backend, contracts, frontend.
+There are 3 distinct packages: server, contracts, frontend.
 
-- The [backend package](/packages/backend/README.md) hosts the API, which is used for demonstration purposes for this tutorial. In a production environment, you will use an API that hosts real data as it pertains to the asset you desire to tokenize. This is only for demonstration purposes and not designed to be used in production.
+- The [server package](/packages/server/README.md) hosts the API, which is used for demonstration purposes for this tutorial. In a production environment, you will use an API that hosts real data as it pertains to the asset you desire to tokenize. This is only for demonstration purposes and not designed to be used in production.
 
 - The [contracts package](/packages/contracts/README.md) stores the smart contract and the tasks for executing the key functionality for a tokenized Real Estate asset that is connected to Chainlink's Functions.
 
