@@ -1,1 +1,0 @@
-exports.pricesRequest = require("./prices/index.js");

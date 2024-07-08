@@ -17,7 +17,7 @@ const priceConfig = {
     // secretsLocation: Location.DONHosted,
 
     // source code to be executed
-    source: fs.readFileSync("requests/prices/index.js").toString(),
+    source: fs.readFileSync("priceRequest.js").toString(),
 
     // (optional) accessed within the source code with `secrets.varName` (ie: secrets.apiKey), must be a string.
     secrets: { 
@@ -28,7 +28,7 @@ const priceConfig = {
     args: ["0"],
         
     // shows: expected type of the returned value.
-    expectedReturnType: ReturnType.bytes,
+    expectedReturnType: ReturnType.uint,
   
     // Per-node secrets objects assigned to each DON member. When using per-node secrets, nodes can only use secrets which they have been assigned.
     perNodeSecrets: [],
