@@ -31,7 +31,7 @@ contract RealEstate is
         string response;
     }
 
-    struct Houses {
+    struct House {
         string tokenId;
         address recipientAddress;
         string homeAddress; 
@@ -40,6 +40,8 @@ contract RealEstate is
         uint createTime;
         uint lastUpdate;
     }
+    
+    House[] public houseInfo;
 
     // Chainlink Functions script source code.
     string private constant SOURCE_PRICE_INFO =
@@ -64,7 +66,6 @@ contract RealEstate is
     mapping(string => bytes32) public latestRequestId;
     mapping(string tokenId => string price) public latestPrice;
 
-    Houses[] public houseInfo;
 
     event LastPriceRequested(bytes32 indexed requestId, string tokenId);
     event LastPriceReceived(bytes32 indexed requestId, string response);
