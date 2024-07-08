@@ -7,18 +7,15 @@
   "author": "Buns Enchantress <bunsthedev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "forge test -vv",
     "prices": "node script/getPrices.js",
 
     "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
     "signin": "npx env-enc set-pw",
     "setup": "npx env-enc set",
     "flat": "forge flatten --output src/flats/RealEstate.sol src/RealEstate.sol",
-    
     "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0 --subid 9614",
     "request": "npx hardhat func-request-houseInfo --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0 --subid 9614 --tokenid 0",
     "read": "npx hardhat func-read --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0",
-
     "update": "npx hardhat func-update --network avalancheFuji --contract 0x89DccebCB4715937487f472a482217883e64D5E0 --tokenid 0 --subid 9614",
     "create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0x89DccebCB4715937487f472a482217883e64D5E0"
     },
