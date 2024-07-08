@@ -6,7 +6,6 @@ libs = ["lib"]
 via_ir = true
 
 remappings = [
-    '@chainlink/contracts-ccip/=lib/ccip/contracts/',
     '@chainlink/contracts/=lib/chainlink/contracts/',
     '@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/',
     '@chainlink/local/=lib/chainlink-local/',
