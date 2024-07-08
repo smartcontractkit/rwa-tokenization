@@ -11,9 +11,7 @@ yarn start
 ```
 
 ---
----
 
 ## Endpoints
-
----
-TODO
+- `/houses`: shows houses
+- `/house/:id`: shows data for a house given an ID
