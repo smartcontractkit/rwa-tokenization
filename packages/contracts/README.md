@@ -54,10 +54,6 @@ You may simulate your function using the command below.
 ```
 yarn prices
 ```
-AND // OR
-```
-yarn metadata
-```
 
 For full details on creating HTTP requestion via functions, read our [API Reference Documentation](https://docs.chain.link/chainlink-functions/api-reference/javascript-source).
 

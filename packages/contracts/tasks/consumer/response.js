@@ -3,28 +3,30 @@ const path = require("path")
 const process = require("process")
 
 task(
-  "func-read",
-  "Reads the latest response (or error) returned to a FunctionsConsumer or AutomatedFunctionsConsumer consumer contract"
+  "func-response",
+  "Reads the latest response (or error) returned to a FunctionsConsumer via tokenid"
 )
   .addParam("contract", "Address of the consumer contract to read")
+  .addParam("tokenid", "tokenid to read")
   .addOptionalParam(
     "configpath",
     "Path to Functions request config file",
-    `${__dirname}/../../scripts/price-config.js`,
+    `${__dirname}/../../priceConfig.js`,
     types.string
   )
   .setAction(async (taskArgs) => {
     console.log(`Reading data from Functions consumer contract ${taskArgs.contract} on network ${network.name}`)
     const consumerContractFactory = await ethers.getContractFactory("RealEstate")
     const consumerContract = await consumerContractFactory.attach(taskArgs.contract)
+    const tokenid = parseInt(taskArgs.tokenid)
+    const houseInfo = await consumerContract.houseInfo(tokenid)
 
-    let latestError = await consumerContract.s_latestError()
-    if (latestError.length > 0 && latestError !== "0x") {
-      const errorString = Buffer.from(latestError.slice(2), "hex").toString()
-      console.log(`\nOn-chain error message: ${errorString}`)
-    }
-
-    let latestResponse = await consumerContract.s_latestResponse()
+  // get the result from the on-chain response and display it.
+    let latestResponse = Number(houseInfo.listPrice)
+    console.log("\nOn-Chain response (listPrice): ", latestResponse.toLocaleString(
+      "en-US",
+      { style: "currency", currency: "USD" }
+    ))
     if (latestResponse.length > 0 && latestResponse !== "0x") {
       const requestConfig = require(path.isAbsolute(taskArgs.configpath)
         ? taskArgs.configpath
