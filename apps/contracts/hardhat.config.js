@@ -51,7 +51,6 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      // avalanche: networks.avalanche.verifyApiKey
       avalancheFuji: networks.avalanche.verifyApiKey
     },
   },
@@ -64,10 +63,7 @@ module.exports = {
   contractSizer: {
     runOnCompile: false,
     only: [
-      "RealEstate",
-      "FunctionsConsumer",
-      "AutomatedFunctionsConsumer",
-      "FunctionsBillingRegistry"
+      "RealEstate"
     ],
   },
   paths: {
