@@ -7,14 +7,11 @@ require("@chainlink/env-enc").config()
 // configures request: via settings in the fields below
 const priceConfig = {
 
-    // source code location (inline only)
+    // source code location
     codeLocation: Location.Inline,
     
     // code language (JavaScript only)
     codeLanguage: CodeLanguage.JavaScript,
-
-    // (optional) if secrets are expected in the sourceLocation of secrets (only Remote or DONHosted is supported)
-    // secretsLocation: Location.DONHosted,
 
     // source code to be executed
     source: fs.readFileSync("priceRequest.js").toString(),
@@ -28,7 +25,7 @@ const priceConfig = {
     args: ["0"],
         
     // shows: expected type of the returned value.
-    expectedReturnType: ReturnType.uint,
+    expectedReturnType: ReturnType.uint256,
   
     // Per-node secrets objects assigned to each DON member. When using per-node secrets, nodes can only use secrets which they have been assigned.
     perNodeSecrets: [],
