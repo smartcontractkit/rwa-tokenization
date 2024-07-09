@@ -16,19 +16,27 @@
     "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --subid 9614",
     "request": "npx hardhat func-request --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --subid 9614 --tokenid 0",
     "response": "npx hardhat func-response --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --tokenid 0"
-    },
-    "dependencies": {
-      "@chainlink/env-enc": "^1.0.5",
-      "@chainlink/functions-toolkit": "^0.2.8"
-    },
-    "devDependencies": {
-      "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-      "@nomicfoundation/hardhat-foundry": "^1.1.2",
-      "@nomiclabs/hardhat-ethers": "^2.2.3",
-      "chai": "^5.1.1",
-      "hardhat": "^2.22.6",
-      "hardhat-contract-sizer": "^2.10.0",
-      "ora": "8.0.1",
-      "typechain": "^8.3.2"
-    }
+  },
+  "dependencies": {
+    "@chainlink/env-enc": "^1.0.5",
+    "@chainlink/functions-toolkit": "^0.2.8"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.6",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-foundry": "^1.1.1",
+    "@nomiclabs/hardhat-ethers": "^2.2.2",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^9.1.0",
+    "chai": "^4.3.6",
+    "hardhat": "^2.22.2",
+    "hardhat-contract-sizer": "^2.6.1",
+    "hardhat-gas-reporter": "^2.1.0",
+    "ora": "5.4.1",
+    "solidity-coverage": "^0.8.12",
+    "typechain": "^8.3.2"
+  }
 }
