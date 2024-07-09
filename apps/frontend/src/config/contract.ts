@@ -5,7 +5,7 @@ export const CONTRACT_ADDRESS_REAL_ESTATE = '0x89DccebCB4715937487f472a482217883
 // The code here has been slightly changed to escape special characters in order to be displayed on the web-page.
 
 export const CONTRACT_CODE = `// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 import { FunctionsClient } from "@chainlink/contracts/src/v0.8/functions/v1_0_0/FunctionsClient.sol";
 import { FunctionsRequest } from "@chainlink/contracts/src/v0.8/functions/v1_0_0/libraries/FunctionsRequest.sol";
 import { ConfirmedOwner } from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
@@ -37,7 +37,7 @@ contract RealEstate is
         string response;
     }
 
-    struct Houses {
+    struct House {
         string tokenId;
         address recipientAddress;
         string homeAddress; 
@@ -46,6 +46,8 @@ contract RealEstate is
         uint createTime;
         uint lastUpdate;
     }
+    
+    House[] public houseInfo;
 
     // Chainlink Functions script source code.
     string private constant SOURCE_PRICE_INFO =
@@ -70,7 +72,6 @@ contract RealEstate is
     mapping(string => bytes32) public latestRequestId;
     mapping(string tokenId => string price) public latestPrice;
 
-    Houses[] public houseInfo;
 
     event LastPriceRequested(bytes32 indexed requestId, string tokenId);
     event LastPriceReceived(bytes32 indexed requestId, string response);
@@ -104,7 +105,7 @@ contract RealEstate is
         _totalHouses++;
 
         // create: instance of a House.
-       houseInfo.push(Houses({
+       houseInfo.push(House({
             tokenId: tokenId,
             recipientAddress: recipientAddress,
             homeAddress: homeAddress,
@@ -128,12 +129,12 @@ contract RealEstate is
      * @notice Request \`lastPrice\` for a given \`tokenId\`
      * @param tokenId id of said token e.g. 0
      */
-    function requestLastPrice(string calldata tokenId, uint index) external {
+    function requestPrice(string calldata tokenId, uint index) external {
         string[] memory args = new string[](1);
         args[0] = tokenId;
 
         // gets: houseInfo[tokenId]
-        Houses storage house = houseInfo[index];
+        House storage house = houseInfo[index];
 
         // ensures: price update is not too soon (i.e. not until a full epoch elapsed).
         require(block.timestamp - house.lastUpdate >= epoch, "RealEstate: Price update too soon");
@@ -214,7 +215,7 @@ contract RealEstate is
         latestPrice[tokenId] = string(response);
 
         // gets: houseInfo[tokenId]
-        Houses storage house = houseInfo[index];
+        House storage house = houseInfo[index];
 
         // updates: listPrice for a given \`tokenId\`.
         house.listPrice = string(response);

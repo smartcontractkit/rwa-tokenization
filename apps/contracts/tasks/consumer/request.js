@@ -189,7 +189,7 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
       overrides.nonce = networks[network.name].nonce
     }
 
-    const requestTx = await consumerContract.requestLastPrice(
+    const requestTx = await consumerContract.requestPrice(
       tokenid,  // tokenid
       tokenid  // index of the token to request
     )
