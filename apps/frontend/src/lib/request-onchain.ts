@@ -42,7 +42,7 @@ export const getHouseOnChain = async (requestId: string) => {
 
 export const requestHouseOnChain = async (tokenId: any) => {
   const contract = getRealEstateContract()
-  const tx = await contract.requestLastPrice(
+  const tx = await contract.requestPrice(
     tokenId,
     tokenId
   )

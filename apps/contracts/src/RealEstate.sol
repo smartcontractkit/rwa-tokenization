@@ -123,7 +123,7 @@ contract RealEstate is
      * @notice Request `lastPrice` for a given `tokenId`
      * @param tokenId id of said token e.g. 0
      */
-    function requestLastPrice(string calldata tokenId, uint index) external {
+    function requestPrice(string calldata tokenId, uint index) external {
         string[] memory args = new string[](1);
         args[0] = tokenId;
 
