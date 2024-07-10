@@ -23,7 +23,7 @@ export default async function HomePage({
   const listPrice = getListPrice(chainData)
   const currentPrice = getCurrentPrice(offchainData)
   const needsUpdate = listPrice != currentPrice
-
+  
   return (
     <main className="container px-6 md:px-10">
       <div className={
@@ -147,6 +147,7 @@ export default async function HomePage({
       <UnderTheHood />
       {/* @todo */}
       {/* <footer className="container px-6 py-10 md:px-10">
+       
       </footer> */}
     </main>
   )
