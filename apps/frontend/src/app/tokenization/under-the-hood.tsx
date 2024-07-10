@@ -17,10 +17,26 @@ const UnderTheHood = ({ children }: { children?: ReactNode }) => {
   const linesRef = useRef<Array<HTMLSpanElement | null>>([])
 
   return (
-    <div className="border-b-border space-y-10 border-b py-10 lg:flex lg:min-w-0 lg:space-x-10 lg:space-y-0">
-      <div className="lg:w-[340px] lg:shrink-0">
-        <h3 className="mb-9 text-2xl font-medium tracking-[-0.24px]">
-          Under the Hood
+    <div className="border-b-border space-y-8 border-b py-8 lg:flex lg:min-w-0 lg:space-x-4 lg:space-y-0">
+      <div className="lg:w-[25%] lg:shrink-0 border-2"
+          style={{
+          border: '2px solid #375BD2',
+          borderRadius: '8px',
+          color: '#375BD2',
+          cursor: 'pointer',
+        }}
+      >
+        <h3 className="mb-9 flex justify-center text-center items-center text-3xl font-medium tracking-[-0.24px]"
+          style={{
+            borderBottom: '4px solid #375BD2',
+            borderTop: '4px solid #375BD2',
+            borderRadius: '6px',
+            padding: '16px',
+            color: '#375BD2',
+            cursor: 'pointer',
+          }}
+        >
+          Key Components
         </h3>
         {/* @ts-ignore */}
         {TABS.map(({ label, content, highlightedLines }, i) =>
@@ -28,7 +44,7 @@ const UnderTheHood = ({ children }: { children?: ReactNode }) => {
             <Button
               key={i}
               //   eslint-disable-next-line tailwindcss/no-custom-classname
-              className="border-border h-fit w-full flex-col items-start space-y-2 border border-l-8 border-l-[#375BD2] bg-[#181D2999] px-8 py-6 text-left"
+              className="border-border h-fit w-full flex-col items-start space-y-2 border border-l-8 border-l-[#375BD2] bg-[#181D2999] px-8 py-4 text-left"
               onClick={() => {
                 scrollRef.current?.scrollTo({
                   top: linesRef.current[Math.min(...highlightedLines) - 3]
@@ -63,9 +79,16 @@ const UnderTheHood = ({ children }: { children?: ReactNode }) => {
           ),
         )}
       </div>
-      <div className="lg:min-w-0 lg:shrink">
+      <div className="lg:min-w-0 lg:shrink"
+            style={{
+              border: '2px solid #375BD2',
+              borderRadius: '8px',
+              color: '#375BD2',
+              cursor: 'pointer'
+            }}
+      >
         <ScrollArea
-          className="border-border mb-6 mt-16 h-[448px] rounded border"
+          className="border-border mb-4 h-[524px] rounded border"
           ref={scrollRef}
         >
           <CodeBlock
@@ -109,7 +132,7 @@ const UnderTheHood = ({ children }: { children?: ReactNode }) => {
                 position: 'relative',
                 paddingLeft: '76px',
                 paddingRight: '24px',
-                minHeight: '21px',
+                minHeight: '22px',
               }
               if (TABS[activeTab].highlightedLines.includes(lineNumber)) {
                 style.backgroundColor = 'rgba(55, 91, 210, 0.40)'
