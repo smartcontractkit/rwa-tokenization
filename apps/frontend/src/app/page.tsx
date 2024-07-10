@@ -7,6 +7,7 @@ import { TokenInput } from '@/components/token-input'
 import { OnchainResponse } from './tokenization/onchain-response'
 import { UpdateButton } from '../components/update-button'
 import { fetchHouse, fetchOnChainHouse, getCurrentPrice, getListPrice } from '@/lib/fetch-house'
+import { ArchitectureButton } from '@/components/architecture-button'
 
 export default async function HomePage({
   searchParams,
@@ -14,6 +15,7 @@ export default async function HomePage({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const tokenId = searchParams['tokenId'] as string
+  const showArchitecture = searchParams['architecture'] as string
 
   const offchainData = await fetchHouse(tokenId)
   const chainData = await fetchOnChainHouse(tokenId)
@@ -25,16 +27,16 @@ export default async function HomePage({
   return (
     <main className="container px-6 md:px-10">
       <div className={
-        !tokenId 
-          ? "grid gap-0 border-b border-b-border py-10 md:grid-cols-[2fr_4px_minmax(0,_1fr)_4px_0fr]" 
-          : "grid gap-10 border-b border-b-border py-10 md:grid-cols-[1fr_4px_minmax(0,_1fr)_4px_1fr]" 
+        !tokenId
+          ? "grid gap-0 border-b border-b-border py-10 md:grid-cols-[2fr_4px_minmax(0,_1fr)_4px_0fr]"
+          : "grid gap-10 border-b border-b-border py-10 md:grid-cols-[1fr_4px_minmax(0,_1fr)_4px_1fr]"
       }
       >
         {!tokenId && (
           <>
             <div>
               <h2 className="mb-4 text-2xl font-medium tracking-[-0.24px] md:mb-8 md:text-[32px] md:leading-[42px] md:tracking-[-0.64px]">
-              Tokenize Real Estate with Functions
+                Tokenize Real Estate with Functions
               </h2>
               <p className="text-base text-muted-foreground md:text-xl">
                 Perform custom computation off-chain using Web2 data in your
@@ -49,7 +51,7 @@ export default async function HomePage({
             Token ID
           </label>
           <TokenInput />
-        {tokenId && needsUpdate && <UpdateButton tokenId={tokenId} />}
+          {tokenId && needsUpdate && <UpdateButton tokenId={tokenId} />}
         </div>
         {tokenId && (
           <>
@@ -134,17 +136,18 @@ export default async function HomePage({
           </>
         )}
       </div>
+      {!showArchitecture && <ArchitectureButton show={'true'} />}
+      {showArchitecture && <Image
+        src="/how-it-works.png"
+        width={1926}
+        height={1318}
+        alt="how-it-works"
+        className="mt-4 rounded-lg border border-border justify-center"
+      />}
       <UnderTheHood />
       {/* @todo */}
       {/* <footer className="container px-6 py-10 md:px-10">
-        <h2 className="text-2xl font-medium">How It Works</h2>
-        <Image
-          src="/how-it-works-x.jpg"
-          width={1926}
-          height={1318}
-          alt="how-it-works"
-          className="mt-6 rounded-lg border border-border"
-        />
+       
       </footer> */}
     </main>
   )
