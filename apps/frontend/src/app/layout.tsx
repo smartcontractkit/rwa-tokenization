@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 
 import { siteConfig } from '@/config/site'
-import { figtree } from '@/lib/fonts'
+// import { figtree } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { SiteHeader } from '@/components/site-header'
 import { Metadata } from 'next'
@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased',
-          figtree.variable,
+          '--font-sans' // figtree.variable,
         )}
       >
         <SiteHeader />
