@@ -7,6 +7,7 @@ import { TokenInput } from '@/components/token-input'
 import { OnchainResponse } from './tokenization/onchain-response'
 import { UpdateButton } from '../components/update-button'
 import { fetchHouse, fetchOnChainHouse, getCurrentPrice, getListPrice } from '@/lib/fetch-house'
+import { ArchitectureButton } from '@/components/architecture-button'
 
 export default async function HomePage({
   searchParams,
@@ -14,6 +15,7 @@ export default async function HomePage({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const tokenId = searchParams['tokenId'] as string
+  const showArchitecture = searchParams['architecture'] as string
 
   const offchainData = await fetchHouse(tokenId)
   const chainData = await fetchOnChainHouse(tokenId)
@@ -21,7 +23,7 @@ export default async function HomePage({
   const listPrice = getListPrice(chainData)
   const currentPrice = getCurrentPrice(offchainData)
   const needsUpdate = listPrice != currentPrice
-
+  
   return (
     <main className="container px-6 md:px-10">
       <div className={
@@ -134,18 +136,19 @@ export default async function HomePage({
           </>
         )}
       </div>
+      {!showArchitecture &&    <ArchitectureButton show={'true'} />}
+         {showArchitecture && <Image
+            src="/how-it-works.png"
+            width={1926}
+            height={1318}
+            alt="how-it-works"
+            className="mt-4 rounded-lg border border-border justify-center"
+          />}
       <UnderTheHood />
       {/* @todo */}
-      <footer className="container px-6 py-10 md:px-10">
-        <h2 className="text-2xl font-medium">How It Works</h2>
-        <Image
-          src="/how-it-works.png"
-          width={1926}
-          height={1318}
-          alt="how-it-works"
-          className="mt-6 rounded-lg border border-border"
-        />
-      </footer>
+      {/* <footer className="container px-6 py-10 md:px-10">
+       
+      </footer> */}
     </main>
   )
 }
