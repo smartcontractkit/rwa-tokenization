@@ -21,3 +21,6 @@ broadcast
 
 # HH Files
 build
+
+# Misc
+.DS_STORE
