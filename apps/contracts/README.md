@@ -45,6 +45,8 @@ After running the command, you'll be prompted to enter the following for each va
 For this demonstration, you will need to add the following to your encrypted environment variables:
 - `PRIVATE_KEY`
 
+**Note**: you may verify your environment variables are set by running `npx env-enc view`.
+
 ### 2. Simulate Functions
 Before deploying, it's useful to simulate the execution of your function to ensure the output of your function execution is as expected.
 
