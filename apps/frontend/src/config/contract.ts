@@ -301,40 +301,46 @@ contract RealEstate is
 
 export const TABS = [
     {
-        label: 'Contracts Imports',
+        label: 'Contract Imports',
         content:
             'Where we tell our smart contract we want to use Chainlink Functions.',
         highlightedLines: Array.from({ length: 2 }, (v, k) => 3 + k),
     },
     {
-        label: 'JavaScript Source',
+        label: 'JavaScript Code',
         content:
             'JavaScript Chainlink Functions will execute. Storing on-chain guarantees only this code will be executed.',
-        highlightedLines: Array.from({ length: 10 }, (v, k) => 45 + k),
+        highlightedLines: Array.from({ length: 11 }, (v, k) => 46 + k),
     },
     {
         label: 'Subscription ID',
         content:
             'Chainlink Functions <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/resources/subscriptions">subscription ID</a> is required for your smart contract to use Chainlink Functions.',
-        highlightedLines: [57],
+        highlightedLines: [59],
     },
     {
-        label: 'Functions Initialization',
+        label: 'Initialization',
         content:
             'We set some Functions-specific configuration values in the contructor, such as the <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/supported-networks">donId</a>, <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/resources/subscriptions">subscriptionId</a>, and gasLimit for the callback transaction.',
-        highlightedLines: Array.from({ length: 10 }, (v, k) => 74 + k),
+        highlightedLines: Array.from({ length: 10 }, (v, k) => 75 + k),
     },
     {
-        label: 'Functions Request',
+        label: 'Request',
         content:
-            'This is called by the UI when a new request is initiated. It sends the request to the Chainlink Functions DoN, along with the tokenId and index of the tokenized asset that requires a price update.',
-        highlightedLines: Array.from({ length: 20 }, (v, k) => 125 + k),
+            'Called when a new request is initiated. Sends request to the Chainlink Functions DoN, along with the tokenId (index) of the asset that requires a price update.',
+        highlightedLines: Array.from({ length: 20 }, (v, k) => 126 + k),
     },
     {
-        label: 'Functions Response',
+        label: 'Response',
         content:
-            'This is the function called by the Chainlink Functions DoN when it receives a response from the JavaScript code executed off-chain in the Chainlink Function.',
+            'Called by the Chainlink Functions DoN when it receives a response from the JavaScript code executed off-chain in the Chainlink Function.',
         highlightedLines: Array.from({ length: 22 }, (v, k) => 198 + k),
+    },
+    {
+        label: 'TokenURI',
+        content:
+            'The URI contains key variables our broker inputs at issuance, which is stored on-chain in an immutable manner',
+        highlightedLines: Array.from({ length: 39 }, (v, k) => 154 + k),
     },
 ]
 
