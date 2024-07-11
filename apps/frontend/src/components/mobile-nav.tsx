@@ -6,12 +6,12 @@ import Link from 'next/link'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
+import Image from 'next/image'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import Image from 'next/image'
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -21,7 +21,8 @@ export function MobileNav() {
       <PopoverTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          // className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
         >
           <Image
             src={open ? '/close.svg' : '/menu.svg'}
@@ -34,6 +35,32 @@ export function MobileNav() {
       </PopoverTrigger>
       <PopoverContent className="mt-3 w-screen rounded-t-none border-border bg-[#181D29] px-6 py-2">
         <div className="flex flex-col items-start space-y-2">
+          <Link
+            rel="noreferrer"
+            href={siteConfig.paths.architecture}
+            className={cn(
+              buttonVariants({ variant: 'default' }),
+              'space-x-2 bg-[#181D29] px-0 py-4 hover:bg-[#181D29]',
+            )}
+          >
+            {/* <Image src="/github.svg" width={16} height={16} alt="github" /> */}
+            <span className="text-base font-[450] leading-4 text-popover">
+              Architecture
+            </span>
+          </Link>
+          <Link
+            rel="noreferrer"
+            href={siteConfig.paths.design}
+            className={cn(
+              buttonVariants({ variant: 'default' }),
+              'space-x-2 bg-[#181D29] px-0 py-4 hover:bg-[#181D29]',
+            )}
+          >
+            {/* <Image src="/github.svg" width={16} height={16} alt="github" /> */}
+            <span className="text-base font-[450] leading-4 text-popover">
+              Design
+            </span>
+          </Link>
           <Link
             target="_blank"
             rel="noreferrer"
