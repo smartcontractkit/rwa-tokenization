@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS_REAL_ESTATE = '0x2Ce373647665F798C7e716eF32d10CA26Ae538B5'
+export const CONTRACT_ADDRESS_REAL_ESTATE = '0xA42572E27C86016Ade89C938Be4c11B047ca76c2'
 
 // Warning: Do not copy/paste this code.
 // Please refer to the supplied example code in the repository instead.
