@@ -5,11 +5,12 @@ import "forge-std/Script.sol";
 import "../src/RealEstate.sol";
 
 contract RealEstateScript is Script {
-    // network-specific settings (todo verify target network configurations).
+    // network-specific settings: verify target network configurations.
     bytes32 public immutable DON_ID = bytes32(0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000);
     address public immutable FUNCTIONS_ROUTER_ADDRESS = address(0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0);
     uint32 public immutable GAS_LIMIT = 300_000;
     uint64 public immutable SUBSCRIPTION_ID = 9614;
+    uint public immutable EPOCH = 600; // 10 minutes
 
     function run() external {
         uint deployerPrivateKey = vm.envUint("PRIVATE_KEY");
@@ -22,10 +23,10 @@ contract RealEstateScript is Script {
             FUNCTIONS_ROUTER_ADDRESS,
             DON_ID,
             SUBSCRIPTION_ID,
-            GAS_LIMIT
+            GAS_LIMIT,
+            EPOCH
         );
 
-        // silences warning.
         realEstate.issueHouse(
             0x6D3cF2d1D7e113a2687dF9080CC490e176F53760,
             '759 Main Lane',
