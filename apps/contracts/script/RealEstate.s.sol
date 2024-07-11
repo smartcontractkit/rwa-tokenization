@@ -9,8 +9,8 @@ contract RealEstateScript is Script {
     bytes32 public immutable DON_ID = bytes32(0x66756e2d6176616c616e6368652d66756a692d31000000000000000000000000);
     address public immutable FUNCTIONS_ROUTER_ADDRESS = address(0xA9d587a00A31A52Ed70D6026794a8FC5E2F5dCb0);
     uint32 public immutable GAS_LIMIT = 300_000;
-    uint64 public immutable SUBSCRIPTION_ID = 9614;
-    uint public immutable EPOCH = 600; // 10 minutes
+    uint64 public immutable SUBSCRIPTION_ID = 10790;    // note: update for you own subId
+    uint public immutable EPOCH = 120;                  // 2 minutes
 
     function run() external {
         uint deployerPrivateKey = vm.envUint("PRIVATE_KEY");
