@@ -82,11 +82,13 @@ contract RealEstate is
         address router,
         bytes32 _donId,
         uint64 _subscriptionId,
-        uint32 _gasLimit
+        uint32 _gasLimit,
+        uint _epoch
     ) FunctionsClient(router) ConfirmedOwner(msg.sender) {
         donId = _donId;
         subscriptionId = _subscriptionId;
         gasLimit = _gasLimit;
+        epoch = _epoch;
     }
 
     /**
@@ -294,7 +296,7 @@ contract RealEstate is
     // OWNER SETTING //
 
     // prevents excessive calls from UI.
-    function setEpoch(uint _epoch) external onlyOwner {
+    function setEpoch(uint _epoch) public onlyOwner {
         epoch = _epoch;
     }
 }`
@@ -310,7 +312,7 @@ export const TABS = [
         label: 'JavaScript Code',
         content:
             'JavaScript Chainlink Functions will execute. Storing on-chain guarantees only this code will be executed.',
-        highlightedLines: Array.from({ length: 11 }, (v, k) => 46 + k),
+        highlightedLines: Array.from({ length: 10 }, (v, k) => 47 + k),
     },
     {
         label: 'Subscription ID',
@@ -322,25 +324,25 @@ export const TABS = [
         label: 'Initialization',
         content:
             'We set some Functions-specific configuration values in the contructor, such as the <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/supported-networks">donId</a>, <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/resources/subscriptions">subscriptionId</a>, and gasLimit for the callback transaction.',
-        highlightedLines: Array.from({ length: 10 }, (v, k) => 75 + k),
+        highlightedLines: Array.from({ length: 12 }, (v, k) => 75 + k),
     },
     {
         label: 'Request',
         content:
             'Called when a new request is initiated. Sends request to the Chainlink Functions DoN, along with the tokenId (index) of the asset that requires a price update.',
-        highlightedLines: Array.from({ length: 20 }, (v, k) => 126 + k),
+        highlightedLines: Array.from({ length: 20 }, (v, k) => 128 + k),
     },
     {
         label: 'Response',
         content:
             'Called by the Chainlink Functions DoN when it receives a response from the JavaScript code executed off-chain in the Chainlink Function.',
-        highlightedLines: Array.from({ length: 22 }, (v, k) => 198 + k),
+        highlightedLines: Array.from({ length: 22 }, (v, k) => 201 + k),
     },
     {
         label: 'TokenURI',
         content:
             'The URI contains key variables our broker inputs at issuance, which is stored on-chain in an immutable manner',
-        highlightedLines: Array.from({ length: 39 }, (v, k) => 154 + k),
+        highlightedLines: Array.from({ length: 39 }, (v, k) => 156 + k),
     },
 ]
 
@@ -367,6 +369,11 @@ export const realEstateABI = [
                 "name": "_gasLimit",
                 "type": "uint32",
                 "internalType": "uint32"
+            },
+            {
+                "name": "_epoch",
+                "type": "uint256",
+                "internalType": "uint256"
             }
         ],
         "stateMutability": "nonpayable"

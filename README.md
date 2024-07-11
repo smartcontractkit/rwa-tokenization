@@ -46,7 +46,7 @@ I use whiteboards when digesting new topics. It helps me visualization the proce
  ```
     yarn deploy
  ```
- - Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md).
+ - Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md). If you made changes to the smart contract, be sure to also update the ABI everywhere it is found in the apps. You abi may be found here in your ignored [`out` directory](/apps/contracts/out/RealEstate.sol/RealEstate.json). When I open the JSON, I format it with a JSON extension in VS Code. Next, I copy the ABI, which is contained in brackets at the start of the JSON.
   
   ```
     yarn serve
