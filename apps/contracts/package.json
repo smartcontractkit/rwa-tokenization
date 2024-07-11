@@ -1,7 +1,7 @@
 {
   "name": "rwa-tokenization-contracts",
   "version": "1.0.0",
-  "description": "RWA tokenization using Chainlink Function on Avalanche.",
+  "description": "RWA tokenization using Chainlink Functions on Avalanche.",
   "main": "index.js",
   "repository": "https://github.com/SmartContractKit/rwa-tokenization.git",
   "author": "Buns Enchantress <bunsthedev@gmail.com>",
