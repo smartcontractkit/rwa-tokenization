@@ -682,7 +682,7 @@ export const realEstateABI = [
     },
     {
         "type": "function",
-        "name": "requestLastPrice",
+        "name": "requestPrice",
         "inputs": [
             {
                 "name": "tokenId",

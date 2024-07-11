@@ -13,8 +13,6 @@ export default async function Tokenization({
 }) {
   const tokenId = searchParams['tokenId'] as string
 
-  // let tokenId: string | undefined
-
   return (
     <main className="container px-6 md:px-10">
       <div className="grid gap-10 border-b border-b-border py-10 md:grid-cols-[1fr_4px_1fr_4px_1fr]">
@@ -112,7 +110,6 @@ export default async function Tokenization({
           </>
         )}
       </div>
-      <UnderTheHood />
     </main>
   )
 }

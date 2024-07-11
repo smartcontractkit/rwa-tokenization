@@ -8,7 +8,8 @@ export const siteConfig = {
       'https://docs.chain.link/chainlink-functions/getting-started',
     testnetFaucet:
     'https://faucets.chain.link/fuji',
-      // 'https://core.app/en/tools/testnet-faucet/?subnet=c&token=c',
+    remixCode: 
+      'https://remix.ethereum.org/#url=https://github.com/SmartContractKit/rwa-tokenization/blob/main/packages/contracts/src/RealEstate.sol',
   },
   paths: {
     search: '/',

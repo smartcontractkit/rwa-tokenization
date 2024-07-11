@@ -1,7 +1,7 @@
 // import Image from 'next/image'
 import UnderTheHood from '../tokenization/under-the-hood'
 
-export default async function Architecture({
+export default async function Design({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -27,12 +27,12 @@ export default async function Architecture({
           backgroundColor: '#181D29',
         }}
       >
-        {`How We Structure Chainlink Functions`}
+        {`Designing Our Tokenization Solution`}
       </div>
       <div className="justify grid justify-center w-full font-medium"
         style={{
           // marginTop: '24px',
-          marginBottom: '18px',
+          // marginBottom: '32px',
           textAlign: 'center',
           borderLeft: '8px solid #375BD2',
           borderRight: '8px solid #375BD2',
@@ -43,29 +43,27 @@ export default async function Architecture({
           backgroundColor: '#181D29',
         }}
       >
-        {/* <iframe 
+        <iframe 
           src="https://docs.google.com/presentation/d/e/2PACX-1vRNp65Fyk5s_GdEZAJrqhCMWcNvuvm_YZBzFb-0GO5tzcA01UyLqhBZMDdcxjr7IsoI0nuJSehG9em6/embed?start=true&loop=true&delayms=60000" 
-
-        >
-          </iframe> */}
-          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQQ9LlxOwCDyy_lJkJhUrKFyKPAJat5G5nCYC7tpCF0Qbl-wWtToqfJnsqX9jMMjYryzM_l3AW5AwLZ/embed?start=false&loop=false&delayms=3000"
             width="1280" 
             height="839"
             className={
               `flex-grow-1 h-[336px] md:h-[839px]`
             }
-            style={{
-              display: 'flex',
-              maxWidth: '100%',
-              // maxHeight: '100%',
-              padding: '0px',
-              color: '#D3D3D3',
-              cursor: 'pointer',
-              backgroundColor: '#181D29',
+          style={{
+            display: 'flex',
+            maxWidth: '100%',
+            // maxHeight: '100%',
+            padding: '0px',
+            color: '#D3D3D3',
+            cursor: 'pointer',
+            backgroundColor: '#181D29',
+          
           }}
-          ></iframe>
+        >
+          </iframe>
       </div>
-      {/* <UnderTheHood /> */}
+      <UnderTheHood showComponents={true} />
     </main>
   )
 }
