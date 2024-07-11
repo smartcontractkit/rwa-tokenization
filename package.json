@@ -14,7 +14,7 @@
     "setup": "cd apps/contracts && yarn setup",
     "build": "cd apps/contracts && make && yarn build && cd ../frontend && yarn build",
     "deploy": "cd apps/contracts && yarn deploy",
-    "create": "cd apps/contracts && yarn create",
+    "create": "cd apps/contracts && yarn sub:create",
     "assign": "cd apps/contracts && yarn assign",
     "serve": "cd apps/server && yarn start",
     "show": "cd apps/frontend && yarn dev"
