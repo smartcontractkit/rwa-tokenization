@@ -46,7 +46,16 @@ I use whiteboards when digesting new topics. It helps me visualization the proce
  ```
     yarn deploy
  ```
- - Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md). If you made changes to the smart contract, be sure to also update the ABI everywhere it is found in the apps. You abi may be found here in your ignored [`out` directory](/apps/contracts/out/RealEstate.sol/RealEstate.json). When I open the JSON, I format it with a JSON extension in VS Code. Next, I copy the ABI, which is contained in brackets at the start of the JSON.
+ - Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md).
+ 
+ - If you made changes to the smart contract, be sure to also update the ABI everywhere it is found in the apps. You abi may be found here in your ignored [`out` directory](/apps/contracts/out/RealEstate.sol/RealEstate.json). When I open the JSON, I format it with a JSON extension in VS Code. Next, I copy the ABI, which is contained in brackets at the start of the JSON.
+
+ ```
+    yarn create || yarn assign
+ ```
+ - Depending on whether you are interesting in (or in need of) creating a new subscription (`subId`), then you will either run the create script to creates, otherwise you will assign your recently deployment RealEstate.sol contract to the `--subid` you specify.
+ 
+ - Be sure to update the `--subid <SUB_ID>` task argument, otherwise `assign` will fail, subscriptions your `PRIVATE_KEY` does not own.
   
   ```
     yarn serve
@@ -56,7 +65,7 @@ I use whiteboards when digesting new topics. It helps me visualization the proce
   ```
     yarn show
   ```
-  > Launches the dev mode of the frontend for local hosting and debugging prior to deployment.
+  - Launches dev mode of the frontend for local hosting and debugging prior to deployment.
 
 ## Directories (`Apps`)
 There are 3 distinct apps: server, contracts, frontend.
