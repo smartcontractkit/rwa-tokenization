@@ -31,41 +31,54 @@ I use whiteboards when digesting new topics. It helps me visualization the proce
   ```
     yarn prepare
   ```
-  - Installs all app dependences, then prompts you to input a password, which will be used to encrypt your [`contracts`](/apps/contracts/README.md) environment variables.
+  Installs all app dependences, then prompts you to input a password, which will be used to encrypt your [`contracts`](/apps/contracts/README.md) environment variables.
   
   ```
     yarn setup
   ``` 
-  - Sets up your environment variables for the contracts app. In our case, we only need `PRIVATE_KEY` to begin.
+  Sets your environment variables for the contracts app. In our case, we only need `PRIVATE_KEY` to begin.
   
   ```
     yarn build
   ```
-  - Carries out the [Makefile](/apps/contracts/Makefile), compiles contracts, then builds the frontend.
+  Carries out the [Makefile](/apps/contracts/Makefile), compiles contracts, then builds the frontend.
 
  ```
     yarn deploy
  ```
- - Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md).
+ Deploys [`RealEstate.sol`](/apps/contracts/src/RealEstate.sol) to Fuji testnet. After deployment please take note of the contract address and update throughout all 3 apps using search and replace, as explained [here](/apps/contracts/README.md).
  
- - If you made changes to the smart contract, be sure to also update the ABI everywhere it is found in the apps. You abi may be found here in your ignored [`out` directory](/apps/contracts/out/RealEstate.sol/RealEstate.json). When I open the JSON, I format it with a JSON extension in VS Code. Next, I copy the ABI, which is contained in brackets at the start of the JSON.
+ If you made changes to the smart contract, be sure to also update the ABI everywhere it is found in the apps. You abi may be found here in your ignored [`out` directory](/apps/contracts/out/RealEstate.sol/RealEstate.json). 
+ 
+ When I open the JSON, I format it with a JSON extension in VS Code. Next, I copy the ABI, which is contained in brackets at the start of the JSON.
 
  ```
     yarn create || yarn assign
  ```
- - Depending on whether you are interesting in (or in need of) creating a new subscription (`subId`), then you will either run the create script to creates, otherwise you will assign your recently deployment RealEstate.sol contract to the `--subid` you specify.
+ Depending on whether you are interesting in (or in need of) creating a new subscription (`subId`), then you will either run the create script to creates, otherwise you will assign your recently deployment RealEstate.sol contract to the `--subid` you specify.
  
- - Be sure to update the `--subid <SUB_ID>` task argument, otherwise `assign` will fail, subscriptions your `PRIVATE_KEY` does not own.
+ Be sure to update the `--subid <SUB_ID>` task argument, otherwise `assign` will fail, subscriptions your `PRIVATE_KEY` does not own.
   
   ```
     yarn serve
   ```
-  - Starts the backend api server instance.
+  Starts the backend api server instance.
   
   ```
     yarn show
   ```
-  - Launches dev mode of the frontend for local hosting and debugging prior to deployment.
+  Launches dev mode of the frontend for local hosting and debugging prior to deployment.
+  
+  ```
+    yarn request
+  ```
+  
+  Submits a priceUpdate request transaction on the RealEstate asset tied to the `--tokenid` passed into the task arg. Prior to submitting the request transaction, you will be provided with an estimated cost (in **LINK**) along with the option to proceed or cancel the transaction.
+
+  ```
+    yarn response
+  ```
+  Shows the response from updating the price associated with the `--tokenid` passed into the task arg.
 
 ## Directories (`Apps`)
 There are 3 distinct apps: server, contracts, frontend.
