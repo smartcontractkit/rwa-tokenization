@@ -16,9 +16,9 @@ export function MainNav() {
           'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
         )}
       >
-        {/* <Image src="/github.svg" width={16} height={16} alt="github" /> */}
+        <Image src="/architecture.svg" width={18} height={18} alt="architecture" />
         <span className="text-base font-[450] leading-4 text-popover">
-          { `Architecture` }
+          {`Architecture`}
         </span>
       </Link>
       <Link
@@ -29,9 +29,9 @@ export function MainNav() {
           'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
         )}
       >
-        {/* <Image src="/github.svg" width={16} height={16} alt="github" /> */}
+        <Image src="/design.svg" width={18} height={18} alt="design" />
         <span className="text-base font-[450] leading-4 text-popover">
-          { `Design` }
+          {`Design`}
         </span>
       </Link>
       <Link
@@ -42,23 +42,9 @@ export function MainNav() {
           'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
         )}
       >
-        {/* <Image src="/github.svg" width={16} height={16} alt="github" /> */}
+        <Image src="/house.svg" width={18} height={18} alt="house" />
         <span className="text-base font-[450] leading-4 text-popover">
-          { `Houses` }
-        </span>
-      </Link>
-      <Link
-        target="_blank"
-        rel="noreferrer"
-        href={siteConfig.links.docs}
-        className={cn(
-          buttonVariants({ variant: 'default' }),
-          'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
-        )}
-      >
-        <Image src="/docs.svg" width={16} height={16} alt="docs" />
-        <span className="text-base font-[450] leading-4 text-popover">
-          { `Functions Architecture` }
+          {`Houses`}
         </span>
       </Link>
     </div>

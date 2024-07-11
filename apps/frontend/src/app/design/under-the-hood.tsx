@@ -11,45 +11,34 @@ import { createElement } from 'react-syntax-highlighter'
 import { CONTRACT_CODE, TABS } from '@/config/contract'
 import { siteConfig } from '@/config/site'
 
-interface Props {
-  showComponents?: boolean
-  children?: ReactNode
-}
-
-const UnderTheHood: React.FC<Props> = ({ showComponents, children }) => {
+const UnderTheHood = ({ children }: { children?: ReactNode }) => {
   const [activeTab, setActiveTab] = useState(0)
   const scrollRef = useRef<HTMLDivElement | null>(null)
   const linesRef = useRef<Array<HTMLSpanElement | null>>([])
+
   return (
-    <div className="border-b-border space-y-8 border-b py-8">
-      {/* <div
-  className={`flex flex-wrap justify-center w-full text-xl md:text-3xl font-bold`}
-  style={{
-    marginTop: '24px',
-    marginBottom: '32px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-    borderLeft: '8px solid #375BD2',
-    borderRight: '8px solid #375BD2',
-    borderRadius: '21px',
-    padding: '8px',
-    color: '#D3D3D3',
-    cursor: 'pointer',
-    backgroundColor: '#181D29',
-  }}
->
-  {`Key Components: Under the Hood`}
-</div> */}
-      {showComponents && <div className="lg:w-[100%] border-2"
+    <div className="border-b-border space-y-8 border-b py-8 lg:flex lg:min-w-0 lg:space-x-4 lg:space-y-0">
+      <div className="lg:w-[25%] lg:shrink-0 border-2"
           style={{
-            borderBottom: '3px solid #375BD2',
-            borderTop: '3px solid #375BD2',
-            borderRadius: '12px',
-            color: '#375BD2',
-            cursor: 'pointer',
+          border: '2px solid #375BD2',
+          borderRadius: '8px',
+          color: '#375BD2',
+          cursor: 'pointer',
         }}
       >
+        {/* <h3 className="mb-9 flex justify-center text-center items-center text-3xl font-medium tracking-[-0.24px]"
+          style={{
+            borderBottom: '4px solid #375BD2',
+            borderTop: '4px solid #375BD2',
+            borderRadius: '6px',
+            padding: '16px',
+            color: '#375BD2',
+            cursor: 'pointer',
+          }}
+        >
+          Key Components
+        </h3> */}
+        {/* @ts-ignore */}
         {TABS.map(({ label, content, highlightedLines }, i) =>
           i === activeTab ? (
             <Button
@@ -67,6 +56,8 @@ const UnderTheHood: React.FC<Props> = ({ showComponents, children }) => {
             >
               <label className="text-xl font-medium">{label}</label>
                 <div dangerouslySetInnerHTML={{ __html: content }}>
+              {/* <p className="text-sm font-[450] text-[#858A95]">
+              </p> */}
                 </div>
             </Button>
           ) : (
@@ -87,8 +78,8 @@ const UnderTheHood: React.FC<Props> = ({ showComponents, children }) => {
             </Button>
           ),
         )}
-      </div>}
-      <div className="lg:min-w-0 lg:shrink mb-8"
+      </div>
+      <div className="lg:min-w-0 lg:shrink"
             style={{
               border: '2px solid #375BD2',
               borderRadius: '8px',
@@ -143,7 +134,7 @@ const UnderTheHood: React.FC<Props> = ({ showComponents, children }) => {
                 paddingRight: '24px',
                 minHeight: '22px',
               }
-              if (showComponents && (TABS[activeTab].highlightedLines.includes(lineNumber))) {
+              if (TABS[activeTab].highlightedLines.includes(lineNumber)) {
                 style.backgroundColor = 'rgba(55, 91, 210, 0.40)'
               }
               return { style }
