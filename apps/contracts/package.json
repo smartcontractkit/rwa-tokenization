@@ -15,11 +15,11 @@
     "flat": "forge flatten --output src/flats/RealEstate.sol src/RealEstate.sol",
     "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
 
-    "sub:create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2",
-    "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --subid 10790",
+    "sub:create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0x73C6a46cCffdbDD3E02d263216821C2759EBFa7d",
+    "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0x73C6a46cCffdbDD3E02d263216821C2759EBFa7d --subid 10790",
 
-    "request": "npx hardhat func-request --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --subid 10790 --tokenid 0",
-    "response": "npx hardhat func-response --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --tokenid 0"
+    "request": "npx hardhat func-request --network avalancheFuji --contract 0x73C6a46cCffdbDD3E02d263216821C2759EBFa7d --subid 10790 --tokenid 0",
+    "response": "npx hardhat func-response --network avalancheFuji --contract 0x73C6a46cCffdbDD3E02d263216821C2759EBFa7d --tokenid 0"
   },
   "dependencies": {
     "@chainlink/env-enc": "^1.0.5",
