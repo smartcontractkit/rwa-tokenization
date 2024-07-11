@@ -9,31 +9,42 @@ export function MainNav() {
   return (
     <div className="hidden space-x-4 md:flex">
       <Link
-        target="_blank"
         rel="noreferrer"
-        href={siteConfig.links.github}
+        href={siteConfig.paths.architecture}
         className={cn(
           buttonVariants({ variant: 'default' }),
           'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
         )}
       >
-        <Image src="/github.svg" width={16} height={16} alt="github" />
+        <Image src="/architecture.svg" width={18} height={18} alt="architecture" />
         <span className="text-base font-[450] leading-4 text-popover">
-          Open in Github
+          {`Architecture`}
         </span>
       </Link>
       <Link
-        target="_blank"
         rel="noreferrer"
-        href={siteConfig.links.docs}
+        href={siteConfig.paths.design}
         className={cn(
           buttonVariants({ variant: 'default' }),
           'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
         )}
       >
-        <Image src="/docs.svg" width={16} height={16} alt="docs" />
+        <Image src="/design.svg" width={18} height={18} alt="design" />
         <span className="text-base font-[450] leading-4 text-popover">
-          Functions Resources
+          {`Design`}
+        </span>
+      </Link>
+      <Link
+        rel="noreferrer"
+        href={siteConfig.paths.search}
+        className={cn(
+          buttonVariants({ variant: 'default' }),
+          'space-x-2 border-2 border-ring px-6 py-3 hover:bg-[#181D29] hover:border-[#375BD2]',
+        )}
+      >
+        <Image src="/house.svg" width={18} height={18} alt="house" />
+        <span className="text-base font-[450] leading-4 text-popover">
+          {`Houses`}
         </span>
       </Link>
     </div>

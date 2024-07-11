@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS_REAL_ESTATE = '0x2Ce373647665F798C7e716eF32d10CA26Ae538B5'
+export const CONTRACT_ADDRESS_REAL_ESTATE = '0xA42572E27C86016Ade89C938Be4c11B047ca76c2'
 
 // Warning: Do not copy/paste this code.
 // Please refer to the supplied example code in the repository instead.
@@ -82,11 +82,13 @@ contract RealEstate is
         address router,
         bytes32 _donId,
         uint64 _subscriptionId,
-        uint32 _gasLimit
+        uint32 _gasLimit,
+        uint _epoch
     ) FunctionsClient(router) ConfirmedOwner(msg.sender) {
         donId = _donId;
         subscriptionId = _subscriptionId;
         gasLimit = _gasLimit;
+        epoch = _epoch;
     }
 
     /**
@@ -294,47 +296,53 @@ contract RealEstate is
     // OWNER SETTING //
 
     // prevents excessive calls from UI.
-    function setEpoch(uint _epoch) external onlyOwner {
+    function setEpoch(uint _epoch) public onlyOwner {
         epoch = _epoch;
     }
 }`
 
 export const TABS = [
     {
-        label: 'Contracts Imports',
+        label: 'Contract Imports',
         content:
             'Where we tell our smart contract we want to use Chainlink Functions.',
         highlightedLines: Array.from({ length: 2 }, (v, k) => 3 + k),
     },
     {
-        label: 'JavaScript Source',
+        label: 'JavaScript Code',
         content:
             'JavaScript Chainlink Functions will execute. Storing on-chain guarantees only this code will be executed.',
-        highlightedLines: Array.from({ length: 10 }, (v, k) => 45 + k),
+        highlightedLines: Array.from({ length: 10 }, (v, k) => 47 + k),
     },
     {
         label: 'Subscription ID',
         content:
             'Chainlink Functions <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/resources/subscriptions">subscription ID</a> is required for your smart contract to use Chainlink Functions.',
-        highlightedLines: [57],
+        highlightedLines: [59],
     },
     {
-        label: 'Functions Initialization',
+        label: 'Initialization',
         content:
             'We set some Functions-specific configuration values in the contructor, such as the <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/supported-networks">donId</a>, <a class="explainer-link" href="https://docs.chain.link/chainlink-functions/resources/subscriptions">subscriptionId</a>, and gasLimit for the callback transaction.',
-        highlightedLines: Array.from({ length: 10 }, (v, k) => 74 + k),
+        highlightedLines: Array.from({ length: 12 }, (v, k) => 75 + k),
     },
     {
-        label: 'Functions Request',
+        label: 'Request',
         content:
-            'This is called by the UI when a new request is initiated. It sends the request to the Chainlink Functions DoN, along with the tokenId and index of the tokenized asset that requires a price update.',
-        highlightedLines: Array.from({ length: 20 }, (v, k) => 125 + k),
+            'Called when a new request is initiated. Sends request to the Chainlink Functions DoN, along with the tokenId (index) of the asset that requires a price update.',
+        highlightedLines: Array.from({ length: 20 }, (v, k) => 128 + k),
     },
     {
-        label: 'Functions Response',
+        label: 'Response',
         content:
-            'This is the function called by the Chainlink Functions DoN when it receives a response from the JavaScript code executed off-chain in the Chainlink Function.',
-        highlightedLines: Array.from({ length: 22 }, (v, k) => 198 + k),
+            'Called by the Chainlink Functions DoN when it receives a response from the JavaScript code executed off-chain in the Chainlink Function.',
+        highlightedLines: Array.from({ length: 22 }, (v, k) => 201 + k),
+    },
+    {
+        label: 'TokenURI',
+        content:
+            'The URI contains key variables our broker inputs at issuance, which is stored on-chain in an immutable manner',
+        highlightedLines: Array.from({ length: 39 }, (v, k) => 156 + k),
     },
 ]
 
@@ -361,6 +369,11 @@ export const realEstateABI = [
                 "name": "_gasLimit",
                 "type": "uint32",
                 "internalType": "uint32"
+            },
+            {
+                "name": "_epoch",
+                "type": "uint256",
+                "internalType": "uint256"
             }
         ],
         "stateMutability": "nonpayable"
@@ -676,7 +689,7 @@ export const realEstateABI = [
     },
     {
         "type": "function",
-        "name": "requestLastPrice",
+        "name": "requestPrice",
         "inputs": [
             {
                 "name": "tokenId",

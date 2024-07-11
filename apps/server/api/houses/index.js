@@ -15,7 +15,6 @@ async function getInfo() {
         }
 }
 
-
 async function getHouseInfo(ctx) {
     const id = Number(ctx.params.id)
     const tokenId = id.toString()

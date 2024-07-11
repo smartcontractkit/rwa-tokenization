@@ -76,11 +76,13 @@ contract RealEstate is
         address router,
         bytes32 _donId,
         uint64 _subscriptionId,
-        uint32 _gasLimit
+        uint32 _gasLimit,
+        uint _epoch
     ) FunctionsClient(router) ConfirmedOwner(msg.sender) {
         donId = _donId;
         subscriptionId = _subscriptionId;
         gasLimit = _gasLimit;
+        epoch = _epoch;
     }
 
     /**
@@ -288,7 +290,7 @@ contract RealEstate is
     // OWNER SETTING //
 
     // prevents excessive calls from UI.
-    function setEpoch(uint _epoch) external onlyOwner {
+    function setEpoch(uint _epoch) public onlyOwner {
         epoch = _epoch;
     }
 }

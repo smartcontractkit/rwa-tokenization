@@ -1,22 +1,25 @@
 {
   "name": "rwa-tokenization-contracts",
   "version": "1.0.0",
-  "description": "RWA tokenization using Chainlink Function on Avalanche.",
+  "description": "RWA tokenization using Chainlink Functions on Avalanche.",
   "main": "index.js",
   "repository": "https://github.com/SmartContractKit/rwa-tokenization.git",
   "author": "Buns Enchantress <bunsthedev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "price": "node script/getPrice.js",
-    "build": "npx hardhat compile",
-    "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
     "signin": "npx env-enc set-pw",
     "setup": "npx env-enc set",
+    "build": "npx hardhat compile",
+
+    "price": "node script/getPrice.js",
     "flat": "forge flatten --output src/flats/RealEstate.sol src/RealEstate.sol",
-    "create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5",
-    "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --subid 9614",
-    "request": "npx hardhat func-request --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --subid 9614 --tokenid 0",
-    "response": "npx hardhat func-response --network avalancheFuji --contract 0x2Ce373647665F798C7e716eF32d10CA26Ae538B5 --tokenid 0"
+    "deploy": "forge script script/RealEstate.s.sol:RealEstateScript --rpc-url https://api.avax-test.network/ext/bc/C/rpc --broadcast",
+
+    "create": "npx hardhat func-sub-create --network avalancheFuji --amount 2 --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2",
+    "assign": "npx hardhat func-sub-add --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --subid 9614",
+
+    "request": "npx hardhat func-request --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --subid 9614 --tokenid 0",
+    "response": "npx hardhat func-response --network avalancheFuji --contract 0xA42572E27C86016Ade89C938Be4c11B047ca76c2 --tokenid 0"
   },
   "dependencies": {
     "@chainlink/env-enc": "^1.0.5",

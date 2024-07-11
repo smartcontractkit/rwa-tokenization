@@ -1,12 +1,22 @@
 {
   "name": "rwa-tokenization",
   "version": "1.0.0",
-  "description": "RWA tokenization using Chainlink Function on Avalanche.",
+  "description": "RWA tokenization using Chainlink Functions on Avalanche.",
   "main": "index.js",
   "repository": "https://github.com/SmartContractKit/rwa-tokenization.git",
   "author": "Buns Enchantress <bunsthedev@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@vercel/kv": "^2.0.0"
+  },
+  "scripts": {
+    "prepare": "cd apps/frontend && yarn && cd ../server && yarn && cd ../contracts && yarn && yarn signin",
+    "setup": "cd apps/contracts && yarn setup",
+    "build": "cd apps/contracts && make && yarn build && cd ../frontend && yarn build",
+    "deploy": "cd apps/contracts && yarn deploy",
+    "create": "cd apps/contracts && yarn create",
+    "assign": "cd apps/contracts && yarn assign",
+    "serve": "cd apps/server && yarn start",
+    "show": "cd apps/frontend && yarn dev"
   }
 }
