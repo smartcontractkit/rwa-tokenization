@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { ArchitectureButton } from '@/components/architecture-button'
 
 export default async function Architecture({
   searchParams,
@@ -31,7 +30,6 @@ export default async function Architecture({
             alt="how-it-works"
             className="mb-4 rounded-lg border border-border justify-center"
           />
-        <ArchitectureButton />
 
           </div>
     </main>

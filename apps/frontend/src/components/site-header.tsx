@@ -15,7 +15,7 @@ export function SiteHeader() {
           </span>
         </a>
         <MobileNav />
-        <MainNav />
+        {/* <MainNav /> */}
       </div>
     </header>
   )

@@ -7,7 +7,7 @@ import { TokenInput } from '@/components/token-input'
 import { OnchainResponse } from './tokenization/onchain-response'
 import { UpdateButton } from '../components/update-button'
 import { fetchHouse, fetchOnChainHouse, getCurrentPrice, getListPrice } from '@/lib/fetch-house'
-import { ArchitectureButton } from '@/components/architecture-button'
+import { Footer } from '@/components/footer'
 
 export default async function HomePage({
   searchParams,
@@ -136,7 +136,6 @@ export default async function HomePage({
           </>
         )}
       </div>
-      {!showArchitecture && <ArchitectureButton show={'true'} />}
       {showArchitecture && <Image
         src="/how-it-works.png"
         width={1926}
@@ -145,10 +144,7 @@ export default async function HomePage({
         className="mt-4 rounded-lg border border-border justify-center"
       />}
       <UnderTheHood />
-      {/* @todo */}
-      {/* <footer className="container px-6 py-10 md:px-10">
-       
-      </footer> */}
+      <Footer />
     </main>
   )
 }
