@@ -203,59 +203,59 @@ task("func-request", "Initiates an on-demand request from a Functions consumer c
     }
 
     // Listen for fulfillment
-    const requestId = requestTxReceipt.events[2].args.id
-    spinner.start(
-      `Request ${requestId} has been initiated. Waiting for fulfillment from the Decentralized Oracle Network...\n`
-    )
+    // const z = requestTxReceipt.events[2].args.id
+    // spinner.start(
+    //   `Request ${requestId} has been initiated. Waiting for fulfillment from the Decentralized Oracle Network...\n`
+    // )
 
-    try {
-      // Get response data
-      const { totalCostInJuels, responseBytesHexstring, errorString, fulfillmentCode } =
-        await responseListener.listenForResponse(requestId)
+    // try {
+    //   // Get response data
+    //   const { totalCostInJuels, responseBytesHexstring, errorString, fulfillmentCode } =
+    //     await responseListener.listenForResponse(requestId)
 
-      switch (fulfillmentCode) {
-        case FulfillmentCode.FULFILLED:
-          if (responseBytesHexstring !== "0x") {
-            spinner.succeed(
-              `Request ${requestId} fulfilled!\nResponse has been sent to consumer contract: ${decodeResult(
-                responseBytesHexstring,
-                requestConfig.expectedReturnType
-              ).toString()}\n`
-            )
-          } else if (errorString.length > 0) {
-            spinner.warn(`Request ${requestId} fulfilled with error: ${errorString}\n`)
-          } else {
-            spinner.succeed(`Request ${requestId} fulfilled with empty response data.\n`)
-          }
-          const linkCost = hre.ethers.utils.formatUnits(totalCostInJuels, 18)
-          console.log(`Total request cost: ${chalk.blue(linkCost + " LINK")}`)
-          break
+    //   switch (fulfillmentCode) {
+    //     case FulfillmentCode.FULFILLED:
+    //       if (responseBytesHexstring !== "0x") {
+    //         spinner.succeed(
+    //           `Request ${requestId} fulfilled!\nResponse has been sent to consumer contract: ${decodeResult(
+    //             responseBytesHexstring,
+    //             requestConfig.expectedReturnType
+    //           ).toString()}\n`
+    //         )
+    //       } else if (errorString.length > 0) {
+    //         spinner.warn(`Request ${requestId} fulfilled with error: ${errorString}\n`)
+    //       } else {
+    //         spinner.succeed(`Request ${requestId} fulfilled with empty response data.\n`)
+    //       }
+    //       const linkCost = hre.ethers.utils.formatUnits(totalCostInJuels, 18)
+    //       console.log(`Total request cost: ${chalk.blue(linkCost + " LINK")}`)
+    //       break
 
-        case FulfillmentCode.USER_CALLBACK_ERROR:
-          spinner.fail(
-            "Error encountered when calling consumer contract callback.\nEnsure the fulfillRequest function in FunctionsConsumer is correct and the --callbackgaslimit is sufficient."
-          )
-          break
+    //     case FulfillmentCode.USER_CALLBACK_ERROR:
+    //       spinner.fail(
+    //         "Error encountered when calling consumer contract callback.\nEnsure the fulfillRequest function in FunctionsConsumer is correct and the --callbackgaslimit is sufficient."
+    //       )
+    //       break
 
-        case FulfillmentCode.COST_EXCEEDS_COMMITMENT:
-          spinner.fail(`Request ${requestId} failed due to a gas price spike when attempting to respond.`)
-          break
+    //     case FulfillmentCode.COST_EXCEEDS_COMMITMENT:
+    //       spinner.fail(`Request ${requestId} failed due to a gas price spike when attempting to respond.`)
+    //       break
 
-        default:
-          spinner.fail(
-            `Request ${requestId} failed with fulfillment code: ${fulfillmentCode}. Please contact Chainlink support.`
-          )
-      }
-    } catch (error) {
-      spinner.fail("Request fulfillment was not received within 5 minute response period.")
-      throw error
-    } finally {
-      // Clean up the gist if it was created
-      if (gistUrl) {
-        const successfulDeletion = await deleteGist(process.env["GITHUB_API_TOKEN"], gistUrl)
-        if (!successfulDeletion) {
-          console.log(`Failed to delete gist at ${gistUrl}. Please delete manually.`)
-        }
-      }
-    }
+    //     default:
+    //       spinner.fail(
+    //         `Request ${requestId} failed with fulfillment code: ${fulfillmentCode}. Please contact Chainlink support.`
+    //       )
+    //   }
+    // } catch (error) {
+    //   spinner.fail("Request fulfillment was not received within 5 minute response period.")
+    //   throw error
+    // } finally {
+    //   // Clean up the gist if it was created
+    //   if (gistUrl) {
+    //     const successfulDeletion = await deleteGist(process.env["GITHUB_API_TOKEN"], gistUrl)
+    //     if (!successfulDeletion) {
+    //       console.log(`Failed to delete gist at ${gistUrl}. Please delete manually.`)
+    //     }
+    //   }
+    // }
   })
